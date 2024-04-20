@@ -14,6 +14,9 @@ supabase: Client = create_client(url, key)
 
 @app.route('/login')
 def login():
+    print(f"url: {url}")
+    print(f"key: {key}")
+    print(f"app.secret_key: {app.secret_key}")
     redirect_uri = f"http://localhost:8080/callback"
     provider = "google"
     
