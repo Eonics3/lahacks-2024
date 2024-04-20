@@ -1,5 +1,6 @@
 // pages/index.tsx
 import { useState } from 'react';
+import SignInPage from '../components/SignInPage';
 
 const Home = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -43,15 +44,13 @@ const Home = () => {
     return (
         <div>
             <h1>Welcome to My App</h1>
-            <button onClick={handleGoogleSignIn} disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign in with Google'}
-            </button>
-            <h1>Upload a CSV or XLSX File</h1>
+            <SignInPage />
+            {/* <h1>Upload a CSV or XLSX File</h1>
             <form onSubmit={handleSubmit}>
                 <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={handleFileChange} />
                 <button type="submit">Upload File</button>
             </form>
-            {message && <p>{message}</p>}
+            {message && <p>{message}</p>} */}
         </div>
     );
 };
