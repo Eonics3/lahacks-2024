@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-function index() {
+export default function Home() {
+  const [loading, setLoading] = useState(false);
 
-  const [message, setMessage] = useState("Loading");
-  const [people, setPeople] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/api/home').then(
-      response => response.json()
-    ).then((data) => {
-        // message = 'Loading'
-        // when data is retrieved, message is set to data.message
-        setMessage(data.message);
-        setPeople(data.people);
-      });
-  }, []);
+  const handleGoogleSignIn = () => {
+    console.log("handling google sign in");
+    window.location.href = 'http://localhost:8080/login';
+  };
 
   return (
     <div>
-      <div>{message}</div>
-      {people.map((person, index) => (
-        <div key={index}>{person}</div>
-      ))}
+      <h1>Welcome to My App</h1>
+      <button onClick={handleGoogleSignIn} disabled={loading}>
+        {loading ? 'Signing in...' : 'Sign in with Google'}
+      </button>
     </div>
-  );  
+  );
 }
-
-export default index;
