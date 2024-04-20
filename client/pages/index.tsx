@@ -1,5 +1,3 @@
-// pages/index.tsx
-import { useState } from 'react';
 import SignInPage from '../components/SignInPage';
 
 const Home = () => {
@@ -12,6 +10,7 @@ const Home = () => {
     return (
         <div>
             <button onClick={toPortal}>To Portal</button>
+            <h1>Welcome to My App</h1>
             <SignInPage />
         </div>
     );
