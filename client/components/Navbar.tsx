@@ -1,23 +1,37 @@
-// components/Navbar.tsx
-import Link from 'next/link';
-import styles from './Navbar.module.css';
+import React from 'react';
+import styled from 'styled-components';
 
-const Navbar = () => {
+const Nav = styled.nav`
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
+
+const Logo = styled.img`
+  width: 100px;
+  margin-bottom: 40px;
+`;
+
+const NavLink = styled.a`
+  margin: 10px 0;
+  color: #333;
+  text-decoration: none;
+`;
+
+const SideNav: React.FC = () => {
   return (
-    <div className={styles.navContainer}>
-      <nav className={styles.logoSection}>
-        <Link href="/" className={styles.link}>Logo</Link>
-      </nav>
-      <nav className={styles.navigation}>
-        <Link href="/upload" className={styles.link}>Upload</Link>
-        <Link href="/dashboard" className={styles.link}>Dashboard</Link>
-        <Link href="/feedback" className={styles.link}>Feedback</Link>
-      </nav>
-      <nav className={styles.loginSection}>
-        <Link href="/login" className={styles.link}>Login</Link>
-      </nav>
-    </div>
+    <Nav>
+      <Logo src="logo1.png" alt="App Logo" />
+      <NavLink href="#">Upload</NavLink>
+      <NavLink href="#">Graphs</NavLink>
+      <NavLink href="#">Takeaways</NavLink>
+    </Nav>
   );
 };
 
-export default Navbar;
+export default SideNav;
