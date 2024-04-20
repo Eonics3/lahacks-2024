@@ -61,3 +61,10 @@
 .navigation a:last-child {
     margin-right: 0;
 } 
+
+.sidebar {
+    width: 200px; /* Set the width of the sidebar */
+    height: 100vh; /* Set the height of the sidebar to the viewport height */
+    background-color: #f0f0f0; /* Background color of the sidebar */
+    padding: 20px; /* Add padding to the sidebar */
+  }

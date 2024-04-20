@@ -1,36 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
+import Link from 'next/link';
+import styles from './Navbar.module.css';
 
-const Nav = styled.nav`
-  height: 100vh;
-  width: 200px;
-  position: fixed;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-`;
+interface SideNavProps {
+  setWindow: React.Dispatch<React.SetStateAction<number>>;
+}
 
-const Logo = styled.img`
-  width: 100px;
-  margin-bottom: 40px;
-`;
-
-const NavLink = styled.a`
-  margin: 10px 0;
-  color: #333;
-  text-decoration: none;
-`;
-
-const SideNav: React.FC = () => {
+const SideNav: React.FC<SideNavProps> = ({ setWindow }) => {
   return (
-    <Nav>
-      <Logo src="logo1.png" alt="App Logo" />
-      <NavLink href="#">Upload</NavLink>
-      <NavLink href="#">Graphs</NavLink>
-      <NavLink href="#">Takeaways</NavLink>
-    </Nav>
+    <nav className = {styles.sidebar}>
+      <ul>
+        <li>
+          <button onClick={() => setWindow(0)}>Window 0</button>
+        </li>
+        <li>
+          <button onClick={() => setWindow(1)}>Window 1</button>
+        </li>
+        <li>
+          <button onClick={() => setWindow(2)}>Window 2</button>
+        </li>
+        <li>
+          <Link href="/contact">
+            Contact
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

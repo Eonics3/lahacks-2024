@@ -17,7 +17,7 @@ def login():
     print(f"url: {url}")
     print(f"key: {key}")
     print(f"app.secret_key: {app.secret_key}")
-    redirect_uri = f"http://localhost:8080/callback"
+    redirect_uri = f"http://localhost:3000/portal"
     provider = "google"
     
     

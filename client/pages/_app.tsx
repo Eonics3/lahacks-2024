@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {showNavbar && <Navbar />}
       <Component {...pageProps} />
     </>
   );
