@@ -1,0 +1,65 @@
+/* Navbar.module.css */
+.navContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    padding: 10px 0;
+}
+
+.logoSection {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    margin: 10px;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    /* Dark gray background for each section */
+    margin: 0 10px;
+    /* Adds space between sections */
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+
+.loginSection {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    margin: 0 10px;
+    /* Adds space between sections */
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #ccc;
+    /* Lighter color on hover */
+}
+
+/* Navbar.module.css */
+.navigation a {
+    margin-right: 20px;
+    /* Adjust the spacing as needed */
+    padding-inline: 35px;
+    /* Provides space inside the link elements */
+}
+
+/* Remove margin for the last item to avoid extra space on the right */
+.navigation a:last-child {
+    margin-right: 0;
+}

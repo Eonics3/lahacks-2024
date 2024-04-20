@@ -1,29 +1,49 @@
-import React, { useEffect, useState } from 'react';
+// pages/index.tsx
+import { useState } from 'react';
 
-function index() {
+const Home = () => {
+    const [file, setFile] = useState<File | null>(null);
+    const [message, setMessage] = useState<string>('');
 
-  const [message, setMessage] = useState("Loading");
-  const [people, setPeople] = useState([]);
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (files && files[0]) {
+            setFile(files[0]);
+        }
+    };
 
-  useEffect(() => {
-    fetch('http://localhost:8080/api/home').then(
-      response => response.json()
-    ).then((data) => {
-        // message = 'Loading'
-        // when data is retrieved, message is set to data.message
-        setMessage(data.message);
-        setPeople(data.people);
-      });
-  }, []);
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
 
-  return (
-    <div>
-      <div>{message}</div>
-      {people.map((person, index) => (
-        <div key={index}>{person}</div>
-      ))}
-    </div>
-  );  
-}
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const data = await response.json();
+                setMessage(data.message);
+            } catch (error) {
+                console.error('Error:', error);
+                setMessage('Failed to upload file.');
+            }
+        } else {
+            setMessage('Please select a file to upload.');
+        }
+    };
 
-export default index;
+    return (
+        <div>
+            <h1>Upload a CSV or XLSX File</h1>
+            <form onSubmit={handleSubmit}>
+                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={handleFileChange} />
+                <button type="submit">Upload File</button>
+            </form>
+            {message && <p>{message}</p>}
+        </div>
+    );
+};
+
+export default Home;
