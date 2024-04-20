@@ -1,11 +1,15 @@
-import '@/styles/globals.css';
+import { useRouter } from 'next/router';
+import Navbar from '../components/Navbar';
+import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Navbar from './Navbar'; // Adjust the path as necessary
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const showNavbar = !['/login', '/special'].includes(router.pathname);
+
   return (
     <>
-      <Navbar />
+      {showNavbar && <Navbar />}
       <Component {...pageProps} />
     </>
   );
