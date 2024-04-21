@@ -11,6 +11,9 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
+import { ClassDictionary } from "clsx";
+import { Bar, Pie } from 'react-chartjs-2';
+import 'chart.js/auto';
 
 export default function Dashboard() {
   const [value, setValue] = useState(0);
@@ -21,6 +24,14 @@ export default function Dashboard() {
   const [ch4_dict, setCh4_dict] = useState({});
   const [n2o_val, setN2o_val] = useState([]);
   const [n2o_dict, setN2o_dict] = useState({});
+  const [subValue, setSubValue] = useState(0); // Initialize state for sub-tabs
+  const handleSubChange = (event, newValue) => {
+    setSubValue(newValue);
+  };  
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
   // co2_val, co2_dict, ch4_val, ch4_dict, n2o_val, n2o_dict
 
@@ -52,9 +63,40 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const createBarChartData = (data:ClassDictionary) => {
+    const labels = Object.keys(data);
+    const values = Object.values(data).map(value => parseInt(value, 10));
+    const colorPalette = [
+      'rgba(255, 99, 132, 0.5)',
+      'rgba(54, 162, 235, 0.5)',
+      'rgba(255, 206, 86, 0.5)',
+      'rgba(75, 192, 192, 0.5)',
+      'rgba(153, 102, 255, 0.5)',
+      'rgba(255, 159, 64, 0.5)',
+      'rgba(255, 0, 255, 0.5)',
+      'rgba(0, 255, 255, 0.5)',
+      'rgba(255, 0, 0, 0.5)',
+      'rgba(0, 255, 0, 0.5)'
+    ]; // Nice color palette
+  
+    return {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Percentage Contribution by Components',
+          data: values,
+          backgroundColor: colorPalette.slice(0, values.length),
+          borderColor: 'rgba(0, 0, 0, 1)', // Black border color
+          borderWidth: 1,
+        },
+      ],
+    };
   };
+  // Chart data configurations
+  console.log('in createBarChartData...');
+  const co2barchart = createBarChartData(co2_dict);
+  const ch4barchart = createBarChartData(ch4_dict);
+  const n2obarchart = createBarChartData(n2o_dict);
 
   return (
     <div>
@@ -137,13 +179,27 @@ export default function Dashboard() {
           </Grid>
         )}
         {value === 1 && (
-          <Box sx={{ p: 3, width: "100%" }}>
-            <Paper elevation={3} sx={{ padding: 2 }}>
-              <Typography variant="h6">Visuals Content</Typography>
-              <Typography>
-                Here you might display graphs or charts related to the data.
-              </Typography>
-            </Paper>
+          <Box sx={{ p: 3, width: '100%' }}>
+            <Tabs value={subValue} onChange={handleSubChange} centered>
+              <Tab label="CO₂ Emissions" />
+              <Tab label="CH₄ Emissions" />
+              <Tab label="N₂O Emissions" />
+            </Tabs>
+            {subValue === 0 && (
+              <Box sx={{ marginTop: 2 }}>
+                <Bar data={co2barchart} />
+              </Box>
+            )}
+            {subValue === 1 && (
+              <Box sx={{ marginTop: 2 }}>
+                <Bar data={ch4barchart} />
+              </Box>
+            )}
+            {subValue === 2 && (
+              <Box sx={{ marginTop: 2 }}>
+                <Bar data={n2obarchart} />
+              </Box>
+            )}
           </Box>
         )}
         {value === 2 && (
