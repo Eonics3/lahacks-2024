@@ -16,6 +16,7 @@ supabase: Client = create_client(url, key)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    print(f"uploading file")
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
     file = request.files['file']
@@ -27,11 +28,59 @@ def upload_file():
             df = pd.read_csv(file)
         elif file.filename.endswith('.xlsx'):
             df = pd.read_excel(file)
+        
+        # for idx, row in df.iterrows():
             
-        # for sheet_name, df in dfs.items():
-            # df_filtered = df.iloc[:, 1:]
-            # if df[0]
                 
+            # app.config[row[0]].append()
+            
+            # if row[0] == "Stationary Combustion":
+            #     print("1")
+            
+            # elif row[0] == "Mobile Combustion CO2":
+            #     print("2")
+                
+            # elif row[0] == "Mobile Combustion CH4 and N2O for On-Road Gasoline Vehicles":
+            #     print("3")
+            
+            # elif row[0] == "Mobile Combustion CH4 and N2O for On-Road Diesel and Alternative Fuel Vehicles":
+            #     print("4")
+            
+            # elif row[0] == "Mobile Combustion CH4 and N2O for Non-Road Vehicles":
+            #     print("5")
+            
+            # elif row[0] == "Electricity":
+            #     print("6")
+            
+        
+            
+        na_rows = df.isna().all(axis=1)
+        na_indices = df.index[na_rows].tolist()
+        
+        split_indices = [0] + na_indices + [len(df)]
+        
+        dfs = []
+        
+        for start, end in zip(split_indices[:-1], split_indices[1:]):
+            sub_df = df.iloc[start:end].dropna(how='all')
+            if not sub_df.empty:
+                dfs.append(sub_df)
+
+            for i in range(1, len(dfs)):
+                dfs[i].columns = dfs[i].iloc[0] 
+                dfs[i] = dfs[i][1:]
+
+            for i in range(len(dfs)):
+                dfs[i] = dfs[i].dropna(axis=1, how='all')
+            
+        transformed_dfs = {}
+        for df in dfs:
+            if not df.empty:
+                key = df.iloc[0, 0]
+                inner_dict = {col: df[col].tolist() for col in df.columns[1:]}
+                transformed_dfs[key] = inner_dict
+                
+        # print(f"transformed_dfs: {transformed_dfs}")
         
         return jsonify({'message': 'File processed', 'data': df.to_json()}), 200
     else:
@@ -40,62 +89,30 @@ def upload_file():
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'csv', 'xlsx'}
 
-# @app.route('/portal')
-# def portal():
-#     print(f"in app.py portal")
-#     error = request.args.get('error')
-#     error_description = request.args.get('error_description')
-#     if error:
-#         print("OAuth Error:", error)
-#         print("Error Description:", error_description)
-#         return f"Error: {error}, Description: {error_description}"
-    
-#     print(f"request: {request}")
-#     code = request.args.get('code')
-#     print(f"code: {code}")
-#     if not code: 
-#         return 'No Authorization Code Provided', 400
-    
-#     token_url = f"{url}/auth/v1/token"
-#     token_data = {
-#         'code': code,
-#         'client_id': 'your_client_id',
-#         'client_secret': 'your_client_secret',
-#         'redirect_uri': 'http://localhost:8080/portal',
-#         'grant_type': 'authorization_code'
-#     }
-    
-#     token_response = requests.post(token_url, data=token_data)
-#     if token_response.status_code != 200:
-#         return 'Failed to obtain access token', 500
-#     access_token = token_response.json().get('access_token')
-    
-#     user_info_url = 'https://www.googleapis.com/oauth2/v1/userinfo'
-#     headers = {'Authorization': f'Bearer {access_token}'}
-#     user_info_response = requests.get(user_info_url, headers=headers)
-#     user_info = user_info_response.json()
-#     email = user_info.get('email')
-    
-#     session['email'] = email
-#     return redirect(f"http://localhost:3000/portal")
-
-@app.route('/login')
+@app.route('/login', methods = ['POST'])
 def login():
-
-    redirect_uri = f"http://127.0.0.1:3000/portal"
-    provider = "google"
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
     
-    oauth_url = f"{url}/auth/v1/authorize?provider={provider}&redirect_to={redirect_uri}"
-    print(oauth_url)
-
-    return redirect(oauth_url)
-
-@app.route('/receive_token')
-def receive_token():
-    data = request.json 
-    print(f"received data: {data}")
+    # authentication logic here 
     
-    return jsonify({'status': 'success', 'data': data})
+    expected_username = username 
+    expected_password = password 
+    
+    if username == expected_username and password == expected_password:
+        app.config['USERNAME'] = username
+        response = supabase.table('users').insert({'email': username, 'password': password}).execute()
+        return jsonify({
+            'success': True,
+            'message': 'Login successful',
+            'redirectUrl': 'http://127.0.0.1:3000/portal'
+        })
+    else:
+        return jsonify({
+            'success': False,
+            'message': 'Login failed'
+        })
 
 @app.route('/callback')
 def callback():
