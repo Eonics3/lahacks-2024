@@ -1,70 +1,67 @@
 import React from "react";
 import styled from "styled-components";
+import styles from "./signin.module.css";
 import { useState } from "react";
 
-const PageContainer = styled.div`
-  display: flex;
-  justify-content: flex-end; // Align children to the right
-  align-items: flex-start; // Align children to the top
-  height: 100vh;
-  width: 100vw; 
-  background: url('backgrnd.svg') no-repeat center center fixed; 
-  background-size: cover;
-  padding: 20px; // Padding to ensure button is not stuck to edges
-`;
+const SignIn: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  // const { user, updateUser } = useContext(UserContext);
 
-const SideNav = styled.nav`
-  width: 250px;
-  background-color: #fff;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-`;
-
-const NavItem = styled.div`
-  margin-top: 20px;
-  font-size: 18px;
-`;
-
-const Logo = styled.img`
-  width: 100%;
-  max-width: 150px;
-  margin-bottom: 40px;
-`;
-
-const SignInButton = styled.button`
-  background-color: white;
-  color: #273b29;
-  border: none;
-  padding: 12px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  cursor: pointer;
-  margin-right: 640px;
-  margin-top: 400px;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #d5e3d7;
-  }
-`;
-
-const SignInPage: React.FC = () => {
-  const handleGoogleSignIn = () => {
-    console.log("handling google sign in");
-    window.location.href = "http://localhost:8080/login";
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
   };
-  const [loading, setLoading] = useState(false);
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Here you can handle the submission, e.g., login logic
+    console.log(username, password);
+    try {
+      const response = await fetch("http://127.0.0.1:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        window.location.href = data.redirectUrl; // Perform redirection on client side
+      } else {
+        console.error("Login failed:", data.message);
+      }
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  };
 
   return (
-    <PageContainer>
-      <SignInButton onClick={handleGoogleSignIn} disabled={loading}>
-        {loading ? "Signing in..." : "Get Started"}
-      </SignInButton>
-    </PageContainer>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          type="text"
+          value={username}
+          onChange={handleUsernameChange}
+          placeholder="Username"
+          className={styles.input}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+          placeholder="Password"
+          className={styles.input}
+        />
+        <button type="submit" className={styles.button}>
+          Sign In
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default SignInPage;
+export default SignIn;
