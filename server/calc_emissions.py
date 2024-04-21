@@ -42,7 +42,7 @@ def dict_to_data(emissions_data: dict):
     
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     vectorstore_disk = Chroma(
-                            persist_directory="/Users/ethanyuan/dev/lahacks-2024/server/chroma_db",       # Directory of db
+                            persist_directory="chroma_db",       # Directory of db
                             embedding_function=embeddings   # Embedding model
                     )
     retriever = vectorstore_disk.as_retriever(search_kwargs={"k": 2})
