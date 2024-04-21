@@ -9,7 +9,8 @@ const Input = styled('input')({
 });  
 
 
-const UploadPage = ({setScreen}) => {
+const UploadPage = () => {
+
 
   return (
     <div style = {{height: '100vh'}}>
@@ -25,7 +26,7 @@ const UploadPage = ({setScreen}) => {
           <li>Click to download our visualizations. Interact with an LLM for further findings.</li>
         </ol>
         <div style={{ maxWidth: '1000px', margin: '20px auto', padding: '10px' }}>
-          <DragAndDrop setScreen={setScreen} />
+          <DragAndDrop />
         </div>
       </div>
     </div>

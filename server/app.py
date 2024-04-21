@@ -17,11 +17,66 @@ url: str = os.getenv("SUPABASE_URL")
 key: str = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
+global_co2_val, global_co2_dict, global_ch4_val, global_ch4_dict, global_n2o_val, global_n2o_dict = None, None, None, None, None, None
+
+@app.route('/data', methods=['GET'])
+def data():
+    global global_co2_val, global_co2_dict, global_ch4_val, global_ch4_dict, global_n2o_val, global_n2o_dict
+    
+    if None in [global_co2_val, global_co2_dict, global_ch4_val, global_ch4_dict, global_n2o_val, global_n2o_dict]:
+        return jsonify({'error': 'Data not available'}), 404
+    else:
+        return jsonify({
+            'co2_val': global_co2_val, 
+            'co2_dict': global_co2_dict, 
+            'ch4_val': global_ch4_val, 
+            'ch4_dict': global_ch4_dict, 
+            'n2o_val': global_n2o_val, 
+            'n2o_dict': global_n2o_dict
+        })
+        
+# @app.route('/co2_dict', methods=['GET'])
+# def co2_dict():
+#     if global_co2_dict == None:
+#         return jsonify({'error': 'Data not available'}), 404
+#     else:
+#         return jsonify(global_co2_dict); 
+
+# @app.route('/ch4_val', methods=['GET'])
+# def ch4_val():
+#     if global_ch4_val == None:
+#         return jsonify({'error': 'Data not available'}), 404
+#     else:
+#         return jsonify(global_ch4_val)
+    
+# @app.route('/ch4_dict', methods=['GET'])
+# def ch4_dict():
+#     if global_ch4_dict == None:
+#         return jsonify({'error': 'Data not available'}), 404
+#     else:
+#         return jsonify(global_ch4_dict)
+
+# @app.route('/n2o_val', methods=['GET'])
+# def n2o_val():
+#     if global_n2o_val == None:
+#         return jsonify({'error': 'Data not available'}), 404
+#     else:
+#         return jsonify(global_n2o_val)
+
+# @app.route('/n2o_dict', methods=['GET'])
+# def n2o_dict():
+#     if global_n2o_dict == None:
+#         return jsonify({'error': 'Data not available'}), 404
+#     else:
+#         return jsonify(global_n2o_dict)
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'csv', 'xlsx'}
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    global global_co2_val, global_co2_dict, global_ch4_val, global_ch4_dict, global_n2o_val, global_n2o_dict
+    
     print("uploading file")
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -69,8 +124,10 @@ def upload_file():
         print(ch4_dict)
         print(n2o_val)
         print(n2o_dict)
+
+        global_co2_val, global_co2_dict, global_ch4_val, global_ch4_dict, global_n2o_val, global_n2o_dict = co2_val, co2_dict, ch4_val, ch4_dict, n2o_val, n2o_dict
         
-        return jsonify({'message': 'File processed', 'data': df.to_json()}), 200
+        return jsonify({'message': 'File processed', 'data': df.to_json(), 'redirectUrl': 'http://localhost:3000/dashboard'}), 200
     else:
         return jsonify({'error': 'Unsupported file type'}), 400
 
@@ -91,7 +148,7 @@ def login():
         return jsonify({
             'success': True,
             'message': 'Login successful',
-            'redirectUrl': 'http://127.0.0.1:3000/portal'
+            'redirectUrl': 'http://127.0.0.1:3000/uploadpage'
         })
     
     if password == response['password']:
@@ -99,7 +156,7 @@ def login():
         return jsonify({
             'success': True,
             'message': 'Login successful',
-            'redirectUrl': 'http://127.0.0.1:3000/portal'
+            'redirectUrl': 'http://127.0.0.1:3000/uploadpage'
         })
     else:
         return jsonify({'success': False, 'message': 'Login failed'})
