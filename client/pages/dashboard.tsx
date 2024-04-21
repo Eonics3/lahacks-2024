@@ -71,6 +71,7 @@ export default function Dashboard() {
             justifyContent: "flex-start",
             "& .MuiTabs-indicator": {
               backgroundColor: "#4CAF50",
+              color: "#4CAF50",
             },
             "& .Mui-selected": {
               // Styles for the selected tab
@@ -99,7 +100,7 @@ export default function Dashboard() {
             {[
               { label: "kg of CO₂ emitted", value: co2_val },
               { label: "g of CH₄ emitted", value: ch4_val },
-              { label: "g of N₂0 emitted", value: n2o_val },
+              { label: "g of N₂O emitted", value: n2o_val },
               { label: "ESG Score", value: "400" },
               { label: "Overall Grade", value: "A-" },
             ].map((metric, index) => (
