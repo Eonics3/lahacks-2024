@@ -58,6 +58,7 @@ def upload_file():
                 transformed_dfs[key] = inner_dict
 
         print(f"transformed_dfs: {transformed_dfs}")
+        
         return jsonify({'message': 'File processed', 'data': df.to_json()}), 200
     else:
         return jsonify({'error': 'Unsupported file type'}), 400
@@ -82,7 +83,7 @@ def login():
             'redirectUrl': 'http://127.0.0.1:3000/portal'
         })
     
-    if password == response[0]['password']:
+    if password == response['password']:
         app.config['USERNAME'] = username
         return jsonify({
             'success': True,

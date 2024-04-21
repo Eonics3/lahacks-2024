@@ -1,38 +1,79 @@
-/* styles/signin.module.css */
+/* signin.module.css */
 .container {
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(22, 53, 3, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px; /* Adjust width as needed */
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent; /* Light gray background */
-    margin-top: 250px;
-
-}
-
-.form {
-    display: flex;
-    margin-bottom: 60px;
     flex-direction: column;
-    padding: 30px;
-    border: 3px solid #0b4d0b; /* Light grey border */
-    border-radius: 10px;
-    background-color:#e8e8e6;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
-}
-
-.input {
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.button {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .input {
+    border: none; /* Remove all borders */
+    border-bottom: 1px solid #ccc; /* Add only bottom border */
+    border-radius: 0; /* Remove border-radius for the bottom line style */
+    margin-bottom: 20px;
     padding: 10px;
-    background-color: #023d02; /* Bootstrap blue */
+    padding-bottom: 12px; /* Add some padding to the bottom */
+    font-size: 16px;
+    outline: none; /* Remove the outline to prevent default focus styles */
+  }
+  
+  .button {
+    background-color: #3d6352; /* example color, use the one from your design */
     color: white;
+    padding: 15px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
+    margin-top: 10px;
     cursor: pointer;
-    margin-top: 5px;
-    margin-bottom: -5px;
-}
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #013208; /* darker shade for hover effect */
+  }
+  
+  /* Additional styles */
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+  
+  .socialButtons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .socialButton {
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .signUpText {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .profileImage {
+    width: 160px; /* Adjust size as needed */
+    height: 160px; /* Adjust size as needed */
+    border-radius: 50%; /* This makes the image circular */
+    margin-bottom: 50px; /* Space below the image */
+    object-fit: cover; /* This will cover the area without stretching the image */
+  }

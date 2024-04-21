@@ -21,9 +21,6 @@ function Portal(){
         <div className={`${screen==1 ? 'block' : 'hidden'}`}>
             <Dashboard />
         </div>
-        <div className={`${screen==2 ? 'block' : 'hidden'}`}>
-            <DummySuggestions />
-        </div>
     </div>);
 }
 
