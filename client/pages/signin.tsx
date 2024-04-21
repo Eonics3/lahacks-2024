@@ -2,16 +2,6 @@ import React, { useState } from "react";
 import styles from "./signin.module.css";
 import styled from 'styled-components';
 
-const PageContainer = styled.div`
-  display: flex;
-  justify-content: center; // Center children horizontally
-  align-items: center; // Center children vertically
-  height: 100vh;
-  width: 100vw;
-  background: url("signinn.png") no-repeat center center fixed;
-  background-size: cover;
-`;
-
 const SignIn: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -47,30 +37,65 @@ const SignIn: React.FC = () => {
     }
   };
 
+  const pageStyles = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    width: '100vw',
+    backgroundImage: 'url(/vivid-blurred-colorful-wallpaper-background.jpg)', 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
+  const formContainerStyles = {
+    background: '#FFFFFF',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
+    padding: '40px',
+    maxWidth: '400px',
+    width: '100%',
+    boxSizing: 'border-box', // Ensures padding doesn't affect width
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
   return (
-    <PageContainer>
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="text"
-          value={username}
-          onChange={handleUsernameChange}
-          placeholder="Username"
-          className={styles.input}
+    <div style = {pageStyles}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Welcome</h1>
+        <img
+          src='/sustain_color.jpg' // Replace with your image path
+          alt="Profile"
+          className={styles.profileImage}
         />
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder="Password"
-          className={styles.input}
-        />
-        <button type="submit" className={styles.button}>
-          Sign In
-        </button>
-      </form>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
+            placeholder="Type your username"
+            className={styles.input}
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+            placeholder="Type your password"
+            className={styles.input}
+          />
+          <div className={styles.socialButtons}>
+            {/* Implement social buttons here */}
+          </div>
+          <button type="submit" className={styles.button}>
+            Login
+          </button>
+        </form>
+      </div>
     </div>
-    </PageContainer>
   );
 };
 
