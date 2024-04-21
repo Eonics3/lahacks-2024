@@ -2,39 +2,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Box, Grid, Paper, Tab, Tabs, Typography, Card, CardContent } from '@mui/material';
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
 export default function Dashboard() {
   const [value, setValue] = useState(0);
 
@@ -55,7 +22,7 @@ export default function Dashboard() {
             { label: 'kg of CO₂ emitted', value: '1,200'},
             { label: 'g of NH₄ emitted', value: '300' },
             { label: 'g of CH₄ emitted', value: '500' },
-            { label: 'Greenhouse Gas Emissions', value: '10,000' },
+            { label: 'ESG Score', value: '400' },
             { label: 'Overall Grade', value: 'A-' }
           ].map((metric, index) => (
             <Grid item xs={3} sm={4} key={index} >

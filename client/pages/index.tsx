@@ -1,17 +1,10 @@
-import SignInPage from '../components/SignInPage';
+import LandingPage from '../components/LandingPage';
+import React from 'react';
 
 const Home = () => {
-
-    const toPortal = () => {
-      console.log("shortcut to portal");
-      window.location.href = 'http://localhost:3000/portal';
-    }
-
     return (
         <div>
-            <button onClick={toPortal}>To Portal</button>
-            <h1>Welcome to My App</h1>
-            <SignInPage />
+            <LandingPage />
         </div>
     );
 };
