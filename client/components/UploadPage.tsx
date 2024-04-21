@@ -6,15 +6,16 @@ import styles from './UploadPage.module.css';
 
 const Input = styled('input')({
   display: 'none',
-});
+});  
+
 
 const UploadPage = ({setScreen}) => {
 
   return (
-    <div>
-      <div style={{ maxWidth: '1000px', margin: '40px auto', padding: '20px', background: '#fff' }}>
+    <div style = {{height: '100vh'}}>
+      <div style={{ maxWidth: '1000px', margin: '40px auto', padding: '20px'}}>
         <h1 style={{ fontWeight: '700', fontSize: '24px', marginBottom: '10px', color: '#333' }}>
-          Sustainalytics
+          Input Company Data
         </h1>
         <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.6', marginBottom: '0px' }}> {/* Adjusted marginBottom to '0px' */}
           A free AI-powered helper for Sustainability analysis. We use Large Language Model Agents combined with Retrieval Augmented Generation to help visualize and deliver key insights for company greenhouse gas emissions. Our calculations are based on the 2023 US Environment Protection Agency's Emissions Factors report.

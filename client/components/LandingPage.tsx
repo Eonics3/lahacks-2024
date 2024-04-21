@@ -51,9 +51,7 @@ const LandingPage: React.FC = () => {
         <div className={styles.container}>
           <h1 className={styles.largeText}>Your AI Partner </h1>
           <h1 className={styles.largeText}>for Sustainability Excellence</h1>
-          <h2>
-            <SignInButton onClick={handleGetStartedClick}>Get Started</SignInButton>
-          </h2>
+          <h2><SignInButton onClick={handleGetStartedClick}>Get Started</SignInButton></h2>
         </div>
       </div>
     </div>

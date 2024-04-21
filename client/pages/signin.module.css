@@ -71,9 +71,23 @@
   }
   
   .profileImage {
-    width: 160px; /* Adjust size as needed */
-    height: 160px; /* Adjust size as needed */
+    width: 140px; /* Adjust size as needed */
+    height: 140px; /* Adjust size as needed */
     border-radius: 50%; /* This makes the image circular */
-    margin-bottom: 50px; /* Space below the image */
+    margin-bottom: 40px; /* Space below the image */
     object-fit: cover; /* This will cover the area without stretching the image */
   }
+
+  @font-face {
+    font-family: 'Hatton';
+    src: url('/fonts/pphatton.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.largeText1 {
+    font-size: 58px; /* Large font size for big text */
+    color: rgb(28, 61, 26); /* Assuming you want it white */
+    font-family: 'Hatton', sans-serif; /* Use the custom font with a fallback */
+    margin-bottom: 10px;
+}

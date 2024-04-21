@@ -14,10 +14,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh;
   width: 100%;
   padding: 20px;
-  background-image: url('/path-to-your-background-image.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -95,3 +93,7 @@
   color: #888;
   font-size: 16px; /* Adjust font size as needed */
 }
+
+/* .div {
+  background-image: url('/vivid-blurred-colorful-wallpaper-background.jpg');
+} */

@@ -10,8 +10,24 @@ export default function Dashboard() {
   };
 
   return (
-    <Box sx={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-      <Tabs value={value} onChange={handleChange} centered>
+    <Box sx={{ width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+      <Tabs value={value} onChange={handleChange} sx={{ 
+        marginLeft: 3, 
+        paddingTop: 2,
+        justifyContent: 'flex-start', 
+        '& .MuiTabs-indicator': {
+            backgroundColor: '#4CAF50',
+          },
+          '& .Mui-selected': {  // Styles for the selected tab
+            color: '#4CAF50',  // Change text color for the active tab
+          },
+          '& .MuiTab-root': {  // Styles for all tabs
+            color: 'black',  // Default text color for tabs
+            '&:hover': {
+              color: '#4CAF50',  // Hover color
+            },
+        }
+      }}>
         <Tab label="Summary" />
         <Tab label="Visuals" />
         <Tab label="Report" />

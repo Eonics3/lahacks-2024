@@ -66,7 +66,7 @@ const SignIn: React.FC = () => {
   return (
     <div style = {pageStyles}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Welcome</h1>
+        <h1 className={styles.largeText1}>Welcome</h1>
         <img
           src='/sustain_color.jpg' // Replace with your image path
           alt="Profile"
