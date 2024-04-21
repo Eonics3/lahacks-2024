@@ -1,15 +1,20 @@
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
 import pandas as pd
 from supabase_py import create_client, Client
+from dotenv import load_dotenv
+from calc_emissions import dict_to_data
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
 CORS(app)
 
-url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
+url: str = os.getenv("SUPABASE_URL")
+key: str = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
 def allowed_file(filename):
@@ -57,7 +62,13 @@ def upload_file():
                 inner_dict = {col: df[col].tolist() for col in df.columns[1:]}
                 transformed_dfs[key] = inner_dict
 
-        print(f"transformed_dfs: {transformed_dfs}")
+        co2_val, co2_dict, ch4_val, ch4_dict, n2o_val, n2o_dict = dict_to_data(transformed_dfs)
+        print(co2_val)
+        print(co2_dict)
+        print(ch4_val)
+        print(ch4_dict)
+        print(n2o_val)
+        print(n2o_dict)
         
         return jsonify({'message': 'File processed', 'data': df.to_json()}), 200
     else:
