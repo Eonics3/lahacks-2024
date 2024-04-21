@@ -13,7 +13,7 @@ for i in range(1,11):
     print(f"storing table{i} csv")
     data = loader.load()
     
-    vector_store_directory = f"/Users/ethanyuan/dev/lahacks-2024/server/chroma_db/Table{i}"
+    vector_store_directory = f"/chroma_db/Table{i}"
     print(f"Storing data in {vector_store_directory}")
     vectorstore = Chroma.from_documents(
         documents=data,

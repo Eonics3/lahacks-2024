@@ -10,7 +10,7 @@ Flask-Cors==4.0.0
 Flask-SQLAlchemy==3.1.1
 gotrue==0.2.0
 h11==0.14.0
-httpcore==0.12.3
+httpcore==0.12.3 
 httpx==0.16.1
 idna==2.10
 importlib-metadata==7.1.0
@@ -56,3 +56,4 @@ pandas~=2.2.2
 langchain_experimental~=0.0.57
 langchain_core~=0.1.45
 langchain-google-genai~=1.0.2
+chromadb
