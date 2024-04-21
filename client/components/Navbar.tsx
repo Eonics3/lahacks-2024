@@ -1,56 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 import styles from './Navbar.module.css';
 
 const NavBar = styled(AppBar)({
   backgroundColor: '#537551', // A shade of green
 });
 
-const MenuButton = styled(IconButton)({
-  marginRight: 20, // Adjust spacing to the right of the menu button
-});
+const TopNav: React.FC = () => {
+  const router = useRouter();
 
-interface TopNavProps {
-  setScreen: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const TopNav: React.FC<TopNavProps> = ({ setScreen }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
+  const handleNavigation = (url: string) => {
+    router.push(url);
   };
-
-  const titles = ["Upload", "Dashboard"];
 
   return (
     <>
       <NavBar position="static">
         <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            <img src="logo.png" alt="Logo" className={styles.logonav} />
-            <h1 className={styles.brandName2}>SUSTAINALYTICS</h1>
+          <Typography variant="h6" component="div" style={{ flexGrow: 1 }} onClick={() => handleNavigation('/')}>
+            <a className={styles.logonav}>
+              <img src="logo.png" alt="Logo" />
+              <span className={styles.brandName2}>SUSTAINALYTICS</span>
+            </a>
           </Typography>
-          {titles.map((title, index) => (
-            <Button
-              key={index}
-              color="inherit"
-              onClick={() => {
-                setScreen(index);
-              }}
-            >
-              {title}
-            </Button>
-          ))}
+          <Button color="inherit" onClick={() => handleNavigation('/uploadpage')}>Upload</Button>
+          <Button color="inherit" onClick={() => handleNavigation('/dashboard')}>Dashboard</Button>
         </Toolbar>
       </NavBar>
-      {/* Optional: Include a Drawer or Popover for the menu if it should still be collapsible */}
     </>
   );
 };
