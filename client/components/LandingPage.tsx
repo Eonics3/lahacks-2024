@@ -1,16 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import styles from './LandingPage.module.css';
 
 const PageContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  position: relative;
   height: 100vh;
   width: 100vw;
-  background: url("landing.png") no-repeat center center fixed;
-  background-size: cover;
-  padding: 20px;
+  overflow: hidden;
 `;
 
 const SignInButton = styled.button`
@@ -23,10 +20,9 @@ const SignInButton = styled.button`
   display: inline-block;
   font-size: 20px;
   cursor: pointer;
-  margin-right: 640px;
-  margin-top: 400px;
   border-radius: 8px;
   transition: background-color 0.3s;
+  margin-top: 10px;
 
   &:hover {
     background-color: #d5e3d7;
@@ -52,9 +48,22 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <PageContainer>
-      <SignInButton onClick={handleGetStartedClick}>Get Started</SignInButton>
-    </PageContainer>
+    <div className={styles.videoContainer}>
+      <video className={styles.video} autoPlay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4" />
+      </video>
+      <img src="logo.png" alt="Logo" className={styles.logo} />
+      <h1 className={styles.brandName}>SUSTAINALYTICS</h1>
+      <div className={styles.overlay}>
+        <div className={styles.container}>
+          <h1 className={styles.largeText}>Your AI Partner </h1>
+          <h1 className={styles.largeText}>for Sustainability Excellence</h1>
+          <h2>
+            <SignInButton onClick={handleGetStartedClick}>Get Started</SignInButton>
+          </h2>
+        </div>
+      </div>
+    </div>
   );
 };
 
