@@ -9,20 +9,27 @@ const Input = styled('input')({
 });
 
 const UploadPage = ({setScreen}) => {
-  const [file, setFile] = useState<File | null>(null);
-  const [message, setMessage] = useState<string>('');
-  const [loading, setLoading] = useState(false);
 
   return (
     <div>
-      <div style={{ maxWidth: '1000px', margin: '40px auto', padding: '20px'}}>
-        <h2 className={styles.pageHeading}>Your descriptive text here</h2> {/* Add this line */}
-        <div style={{ maxWidth: 1000, margin: '40px auto', padding: '20px' }}>
-          <DragAndDrop setScreen = {setScreen}/>
+      <div style={{ maxWidth: '1000px', margin: '40px auto', padding: '20px', background: '#fff' }}>
+        <h1 style={{ fontWeight: '700', fontSize: '24px', marginBottom: '10px', color: '#333' }}>
+          Sustainalytics
+        </h1>
+        <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.6', marginBottom: '0px' }}> {/* Adjusted marginBottom to '0px' */}
+          A free AI-powered helper for Sustainability analysis. We use Large Language Model Agents combined with Retrieval Augmented Generation to help visualize and deliver key insights for company greenhouse gas emissions. Our calculations are based on the 2023 US Environment Protection Agency's Emissions Factors report.
+        </p>
+        <ol style={{ paddingLeft: '20px', listStyleType: 'decimal', marginBottom: '0px' }}> {/* Adjusted marginBottom to '0px' */}
+          <li>Drag or select a .csv file into the drag and drop below.</li>
+          <li>Click to download our visualizations. Interact with an LLM for further findings.</li>
+        </ol>
+        <div style={{ maxWidth: '1000px', margin: '20px auto', padding: '10px' }}>
+          <DragAndDrop setScreen={setScreen} />
         </div>
       </div>
     </div>
   );
+
 }
 
 export default UploadPage;

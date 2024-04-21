@@ -97,21 +97,29 @@ export default function DragAndDrop( { setScreen } ) {
           className={styles.hiddenInput}
           onChange={handleChange}
           multiple={false}
-          accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+          accept=".xlsx,.csv"
         />
         <div className={styles.fileDropper}>
         {file ? (
           <div className={styles.filePreview}>
             <span className={styles.fileName}>{file.name}</span>
-              <button onClick={removeFile} className={styles.removeBtn}>
-                &times; Remove
-              </button>
-            </div>
-          ) : (
+            <button onClick={removeFile} className={styles.removeBtn}>
+              &times; Remove
+            </button>
+          </div>
+        ) : (
+          <>
+            <img
+              src="/data-storage-save-cloud-database-download-upload-icon.svg" // Replace with the actual path to your image
+              alt="Descriptive Alt Text"
+              className={styles.interimImage} 
+              onClick = {openFileExplorer}
+            />
             <p className={styles.dropMessage}>
               Drop your files here or <span className={styles.selectFile} onClick={openFileExplorer}>select a file</span>
             </p>
-          )}
+          </>
+        )}
         </div>
         <button
           type="button"

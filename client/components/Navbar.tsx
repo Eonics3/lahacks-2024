@@ -38,7 +38,7 @@ interface SideNavProps {
 
 const SideNav: React.FC<SideNavProps> = ({ setScreen }) => {
   // State to manage drawer open/close
-  const [isDrawerOpen, setDrawerOpen] = useState(true);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
