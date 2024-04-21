@@ -34,41 +34,6 @@ def data():
             'n2o_val': global_n2o_val, 
             'n2o_dict': global_n2o_dict
         })
-        
-# @app.route('/co2_dict', methods=['GET'])
-# def co2_dict():
-#     if global_co2_dict == None:
-#         return jsonify({'error': 'Data not available'}), 404
-#     else:
-#         return jsonify(global_co2_dict); 
-
-# @app.route('/ch4_val', methods=['GET'])
-# def ch4_val():
-#     if global_ch4_val == None:
-#         return jsonify({'error': 'Data not available'}), 404
-#     else:
-#         return jsonify(global_ch4_val)
-    
-# @app.route('/ch4_dict', methods=['GET'])
-# def ch4_dict():
-#     if global_ch4_dict == None:
-#         return jsonify({'error': 'Data not available'}), 404
-#     else:
-#         return jsonify(global_ch4_dict)
-
-# @app.route('/n2o_val', methods=['GET'])
-# def n2o_val():
-#     if global_n2o_val == None:
-#         return jsonify({'error': 'Data not available'}), 404
-#     else:
-#         return jsonify(global_n2o_val)
-
-# @app.route('/n2o_dict', methods=['GET'])
-# def n2o_dict():
-#     if global_n2o_dict == None:
-#         return jsonify({'error': 'Data not available'}), 404
-#     else:
-#         return jsonify(global_n2o_dict)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'csv', 'xlsx'}
@@ -118,12 +83,6 @@ def upload_file():
                 transformed_dfs[key] = inner_dict
 
         co2_val, co2_dict, ch4_val, ch4_dict, n2o_val, n2o_dict = dict_to_data(transformed_dfs)
-        print(co2_val)
-        print(co2_dict)
-        print(ch4_val)
-        print(ch4_dict)
-        print(n2o_val)
-        print(n2o_dict)
 
         global_co2_val, global_co2_dict, global_ch4_val, global_ch4_dict, global_n2o_val, global_n2o_dict = co2_val, co2_dict, ch4_val, ch4_dict, n2o_val, n2o_dict
         
