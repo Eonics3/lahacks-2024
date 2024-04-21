@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const PageContainer = styled.div`
@@ -9,7 +8,7 @@ const PageContainer = styled.div`
   align-items: flex-start;
   height: 100vh;
   width: 100vw;
-  background: url("backgrnd.svg") no-repeat center center fixed;
+  background: url("landing.png") no-repeat center center fixed;
   background-size: cover;
   padding: 20px;
 `;
@@ -36,9 +35,8 @@ const SignInButton = styled.button`
 
 const LandingPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  //   const navigate = useNavigate();
 
-  const handleSignInClick = async () => {
+  const handleGetStartedClick = async () => {
     const response = await fetch("http://127.0.0.1:8080/enter", {
       method: "POST",
       headers: {
@@ -55,7 +53,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <PageContainer>
-      <SignInButton onClick={handleSignInClick}>Get Started</SignInButton>
+      <SignInButton onClick={handleGetStartedClick}>Get Started</SignInButton>
     </PageContainer>
   );
 };
