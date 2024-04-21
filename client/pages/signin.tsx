@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 import styles from "./signin.module.css";
+import styled from 'styled-components';
+
+const PageContainer = styled.div`
+  display: flex;
+  justify-content: center; // Center children horizontally
+  align-items: center; // Center children vertically
+  height: 100vh;
+  width: 100vw;
+  background: url("signinn.png") no-repeat center center fixed;
+  background-size: cover;
+`;
 
 const SignIn: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -37,6 +48,7 @@ const SignIn: React.FC = () => {
   };
 
   return (
+    <PageContainer>
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
@@ -58,6 +70,7 @@ const SignIn: React.FC = () => {
         </button>
       </form>
     </div>
+    </PageContainer>
   );
 };
 

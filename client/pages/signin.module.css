@@ -3,17 +3,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Use full viewport height */
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: transparent; /* Light gray background */
+    margin-top: 250px;
+
 }
 
 .form {
     display: flex;
+    margin-bottom: 60px;
     flex-direction: column;
-    padding: 20px;
-    border: 1px solid #ddd; /* Light grey border */
-    border-radius: 8px;
-    background-color: white;
+    padding: 30px;
+    border: 3px solid #0b4d0b; /* Light grey border */
+    border-radius: 10px;
+    background-color:#e8e8e6;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
 }
 
@@ -26,9 +28,11 @@
 
 .button {
     padding: 10px;
-    background-color: #007bff; /* Bootstrap blue */
+    background-color: #023d02; /* Bootstrap blue */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: -5px;
 }
