@@ -1,4 +1,6 @@
-import SignInPage from '../components/SignInPage';
+import LandingPage from '../components/LandingPage';
+import App from './_app'; 
+import React from 'react';
 
 const Home = () => {
 
@@ -9,7 +11,7 @@ const Home = () => {
 
     return (
         <div>
-            <SignInPage />
+            <LandingPage />
         </div>
     );
 };
