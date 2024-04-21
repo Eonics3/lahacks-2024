@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { CircularProgress, Alert } from '@mui/material';
 import styles from './DragAndDrop.module.css';
 
-export default function DragAndDrop( { setScreen } ) {
+export default function DragAndDrop() {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
   const [file, setFile] = useState(null);
@@ -70,8 +70,8 @@ export default function DragAndDrop( { setScreen } ) {
       });
       const data = await response.json();
       setMessage(data.message);
+      window.location.href = data.redirectUrl;
 
-      setScreen(1);
     } catch (error) {
       console.error('Error:', error);
       setMessage('Failed to upload file.');
