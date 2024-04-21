@@ -113,6 +113,7 @@ export default function Dashboard() {
             justifyContent: "flex-start",
             "& .MuiTabs-indicator": {
               backgroundColor: "#4CAF50",
+              color: "#4CAF50",
             },
             "& .Mui-selected": {
               // Styles for the selected tab
@@ -144,6 +145,7 @@ export default function Dashboard() {
               { label: "g of N₂0 emitted", value: n2o_val },
               { label: "ESG Score (1-100)", value: "80" },
               { label: "Overall Grade", value: "B" },
+
             ].map((metric, index) => (
               <Grid item xs={3} sm={4} key={index}>
                 <Card
