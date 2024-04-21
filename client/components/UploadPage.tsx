@@ -30,7 +30,7 @@ const UploadPage = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://127.0.0.1:8080/upload', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
