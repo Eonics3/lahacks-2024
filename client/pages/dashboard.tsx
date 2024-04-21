@@ -100,8 +100,8 @@ export default function Dashboard() {
               { label: "kg of CO₂ emitted", value: co2_val },
               { label: "g of CH₄ emitted", value: ch4_val },
               { label: "g of N₂0 emitted", value: n2o_val },
-              { label: "ESG Score", value: "400" },
-              { label: "Overall Grade", value: "A-" },
+              { label: "ESG Score (1-100)", value: "80" },
+              { label: "Overall Grade", value: "B" },
             ].map((metric, index) => (
               <Grid item xs={3} sm={4} key={index}>
                 <Card
@@ -148,12 +148,29 @@ export default function Dashboard() {
         )}
         {value === 2 && (
           <Box sx={{ p: 3, width: "100%" }}>
-            <Paper elevation={3} sx={{ padding: 2 }}>
-              <Typography variant="h6">Report Content</Typography>
-              <Typography>
-                This section could contain textual reports or data summaries.
+            <Paper elevation={3} sx={{ padding: 2, mb: 2 }}>
+              <Typography variant="h6">CO₂ Emissions Insights</Typography>
+              <Typography component="ul">
+                <li>- High impact from mobile combustion and on-road gasoline vehicles, indicating significant transportation emissions.</li>
+                <li>- Stationary combustion also contributes notably to emissions, pointing to industrial and energy production sources.</li>
+                <li>- Lower impacts observed in electricity and steam heat, suggesting efficiencies or reduced usage in these areas.</li>
               </Typography>
             </Paper>
+            <Paper elevation={3} sx={{ padding: 2, mb: 2 }}>
+              <Typography variant="h6">CH₄ Emissions Insights</Typography>
+              <Typography component="ul">
+                <li>- Leading contributors include mobile combustion for on-road gasoline and diesel vehicles, reflecting transportation sector challenges.</li>
+                <li>- Lowest emissions from waste management and end-of-life product categories, showing effective control measures.</li>
+              </Typography>
+            </Paper>  
+            <Paper elevation={3} sx={{ padding: 2 }}>
+              <Typography variant="h6">N₂O Emissions Insights</Typography>
+              <Typography component="ul">
+                <li>- Predominantly from on-road gasoline and diesel vehicles, underscoring the need for cleaner vehicle technologies.</li>
+                <li>- Electricity generation also a notable contributor, possibly due to specific fuel uses or technology choices in power generation.</li>
+                <li>- Steam and heat show lower impact, indicating possible efficiencies gained in these operations.</li>
+              </Typography>
+            </Paper>  
           </Box>
         )}
       </Box>
