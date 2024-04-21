@@ -15,15 +15,25 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/registry/*": ["registry/*"]
+    },
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

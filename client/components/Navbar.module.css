@@ -52,9 +52,7 @@
 
 .navigation a {
     margin-right: 20px;
-    
     padding-inline: 35px;
-   
 }
 
 
@@ -67,4 +65,4 @@
     height: 100vh; /* Set the height of the sidebar to the viewport height */
     background-color: #f0f0f0; /* Background color of the sidebar */
     padding: 20px; /* Add padding to the sidebar */
-  }
+  } 
