@@ -55,7 +55,7 @@ export default function Dashboard() {
             { label: 'kg of CO₂ emitted', value: '1,200'},
             { label: 'g of NH₄ emitted', value: '300' },
             { label: 'g of CH₄ emitted', value: '500' },
-            { label: 'Greenhouse Gas Emissions', value: '10,000' },
+            { label: 'ESG Score', value: '400' },
             { label: 'Overall Grade', value: 'A-' }
           ].map((metric, index) => (
             <Grid item xs={3} sm={4} key={index} >

@@ -4,7 +4,13 @@ import { useState } from "react";
 
 const PageContainer = styled.div`
   display: flex;
+  justify-content: flex-end; // Align children to the right
+  align-items: flex-start; // Align children to the top
   height: 100vh;
+  width: 100vw; 
+  background: url('backgrnd.svg') no-repeat center center fixed; 
+  background-size: cover;
+  padding: 20px; // Padding to ensure button is not stuck to edges
 `;
 
 const SideNav = styled.nav`
@@ -26,21 +32,22 @@ const Logo = styled.img`
 `;
 
 const SignInButton = styled.button`
-  background-color: gray;
-  color: white;
+  background-color: white;
+  color: #273b29;
   border: none;
-  padding: 15px 32px;
+  padding: 12px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  margin: auto;
   cursor: pointer;
+  margin-right: 640px;
+  margin-top: 400px;
   border-radius: 8px;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #d5e3d7;
   }
 `;
 
@@ -54,7 +61,7 @@ const SignInPage: React.FC = () => {
   return (
     <PageContainer>
       <SignInButton onClick={handleGoogleSignIn} disabled={loading}>
-        {loading ? "Signing in..." : "Sign in with Google"}
+        {loading ? "Signing in..." : "Get Started"}
       </SignInButton>
     </PageContainer>
   );
