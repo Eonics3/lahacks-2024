@@ -1,19 +1,19 @@
 import React, { useRef, useState } from "react";
-import { CircularProgress, Alert } from '@mui/material';
-import styles from './DragAndDrop.module.css';
+import { CircularProgress, Alert } from "@mui/material";
+import styles from "./DragAndDrop.module.css";
 
 export default function DragAndDrop() {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
   const [file, setFile] = useState(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
-      setMessage('');
+      setMessage("");
     }
   }
 
@@ -41,13 +41,13 @@ export default function DragAndDrop() {
     setDragActive(false);
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       setFile(e.dataTransfer.files[0]);
-      setMessage('');
+      setMessage("");
     }
   }
 
   function removeFile() {
     setFile(null);
-    setMessage('');
+    setMessage("");
   }
 
   function openFileExplorer() {
@@ -56,25 +56,24 @@ export default function DragAndDrop() {
 
   async function handleUpload() {
     if (!file) {
-      setMessage('Please select a file to upload.');
+      setMessage("Please select a file to upload.");
       return;
     }
     setLoading(true);
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
     try {
-      const response = await fetch('http://127.0.0.1:8080/upload', {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:8080/upload", {
+        method: "POST",
         body: formData,
       });
       const data = await response.json();
       setMessage(data.message);
       window.location.href = data.redirectUrl;
-
     } catch (error) {
-      console.error('Error:', error);
-      setMessage('Failed to upload file.');
+      console.error("Error:", error);
+      setMessage("Failed to upload file.");
     } finally {
       setLoading(false);
       setFile(null);
@@ -100,26 +99,29 @@ export default function DragAndDrop() {
           accept=".xlsx,.csv"
         />
         <div className={styles.fileDropper}>
-        {file ? (
-          <div className={styles.filePreview}>
-            <span className={styles.fileName}>{file.name}</span>
-            <button onClick={removeFile} className={styles.removeBtn}>
-              &times; Remove
-            </button>
-          </div>
-        ) : (
-          <>
-            <img
-              src="/data-storage-save-cloud-database-download-upload-icon.svg" // Replace with the actual path to your image
-              alt="Descriptive Alt Text"
-              className={styles.interimImage} 
-              onClick = {openFileExplorer}
-            />
-            <p className={styles.dropMessage}>
-              Drop your files here or <span className={styles.selectFile} onClick={openFileExplorer}>select a file</span>
-            </p>
-          </>
-        )}
+          {file ? (
+            <div className={styles.filePreview}>
+              <span className={styles.fileName}>{file.name}</span>
+              <button onClick={removeFile} className={styles.removeBtn}>
+                &times; Remove
+              </button>
+            </div>
+          ) : (
+            <>
+              <img
+                src="/data-storage-save-cloud-database-download-upload-icon.svg" // Replace with the actual path to your image
+                alt="Descriptive Alt Text"
+                className={styles.interimImage}
+                onClick={openFileExplorer}
+              />
+              <p className={styles.dropMessage}>
+                Drop your files here or{" "}
+                <span className={styles.selectFile} onClick={openFileExplorer}>
+                  select a file
+                </span>
+              </p>
+            </>
+          )}
         </div>
         <button
           type="button"
@@ -131,7 +133,10 @@ export default function DragAndDrop() {
         </button>
       </form>
       {message && (
-        <Alert severity={message.includes('Failed') ? 'error' : 'success'} className={styles.alert}>
+        <Alert
+          severity={message.includes("Failed") ? "error" : "success"}
+          className={styles.alert}
+        >
           {message}
         </Alert>
       )}

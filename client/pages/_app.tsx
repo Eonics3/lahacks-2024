@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div className="App">
-      <video />
       <Component {...pageProps} />
     </div>
   );

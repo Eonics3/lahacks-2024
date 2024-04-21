@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    align-content: center;
     background-color: white;
     padding: 10px 0;
 }
@@ -20,7 +21,6 @@
     display: flex;
     justify-content: center;
     background-color: #333;
-
     margin: 0 10px;
     border-radius: 25px;
     padding: 10px 20px;
@@ -60,9 +60,39 @@
     margin-right: 0;
 } 
 
-.sidebar {
+ .sidebar {
     width: 200px; /* Set the width of the sidebar */
     height: 100vh; /* Set the height of the sidebar to the viewport height */
     background-color: #f0f0f0; /* Background color of the sidebar */
     padding: 20px; /* Add padding to the sidebar */
   } 
+
+  .logo {
+    position: absolute;
+    top: 25px;
+    left: 27px;
+    height: 65px;  /* Adjust size as needed */
+}
+
+.logonav img {
+    position: absolute;
+    top: 7px;
+    left: 27px;
+    height: 50px;  /* Adjust size as needed */
+}
+
+@font-face {
+    font-family: 'Neueub';
+    src: url('/fonts/neueb.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.brandName2 {
+    position: absolute;
+    top: 19px;  /* Adjust for alignment with the logo */
+    left: 90px;  /* Adjust based on the size of the logo */
+    color: white;
+    font-size: 21px;  /* Adjust size as needed */
+    font-family: 'Neueub', sans-serif; 
+}

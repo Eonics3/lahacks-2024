@@ -52,12 +52,7 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'Neueub';
-    src: url('/fonts/neueb.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 
 .largeText {
     font-size: 64px; /* Large font size for big text */
@@ -72,6 +67,12 @@
     height: 65px;  /* Adjust size as needed */
 }
 
+@font-face {
+    font-family: 'Neueub';
+    src: url('/fonts/neueb.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 .brandName {
     position: absolute;
     top: 45px;  /* Adjust for alignment with the logo */

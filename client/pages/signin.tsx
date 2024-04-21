@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./signin.module.css";
-import styled from 'styled-components';
 
 const SignIn: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -24,7 +23,7 @@ const SignIn: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        mode: "cors",
+        // mode: "cors",
       });
       const data = await response.json();
       if (data.success) {
@@ -38,37 +37,23 @@ const SignIn: React.FC = () => {
   };
 
   const pageStyles = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    width: '100vw',
-    backgroundImage: 'url(/vivid-blurred-colorful-wallpaper-background.jpg)', 
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  };
-
-  const formContainerStyles = {
-    background: '#FFFFFF',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    padding: '40px',
-    maxWidth: '400px',
-    width: '100%',
-    boxSizing: 'border-box', // Ensures padding doesn't affect width
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    width: "100vw",
+    backgroundImage: "url(/vivid-blurred-colorful-wallpaper-background.jpg)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   };
 
   return (
-    <div style = {pageStyles}>
+    <div style={pageStyles}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Welcome</h1>
+        <h1 className={styles.largeText1}>Welcome</h1>
         <img
-          src='/sustain_color.jpg' // Replace with your image path
+          src="/sustain_color.jpg" // Replace with your image path
           alt="Profile"
           className={styles.profileImage}
         />
@@ -87,9 +72,6 @@ const SignIn: React.FC = () => {
             placeholder="Type your password"
             className={styles.input}
           />
-          <div className={styles.socialButtons}>
-            {/* Implement social buttons here */}
-          </div>
           <button type="submit" className={styles.button}>
             Login
           </button>
