@@ -1,0 +1,45 @@
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full height of the viewport */
+  width: 100%; /* Full width */
+  padding: 20px; /* Padding for some spacing around the box */
+}
+
+.dragArea {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 60%; /* Width as per your requirement */
+  max-width: 600px; /* Optional: If you want to limit the max width */
+  margin: 0 auto; /* This centers the box horizontally */
+  text-align: center;
+  transition: background-color 0.3s; /* Smooth transition for drag over effect */
+}
+
+/* ... rest of your styles ... */
+
+/* Additional styles for active drag area */
+.active {
+  background-color: #f8f8f8; /* Light background on active drag */
+}
+
+/* Styles for the button */
+.uploadBtn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 10px; /* Spacing between the drop area and button */
+}
+
+.hiddenInput {
+  display: none; /* Keep your input hidden as you have a custom button */
+}
+
+/* ... rest of your styles ... */

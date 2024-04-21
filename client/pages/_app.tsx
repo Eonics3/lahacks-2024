@@ -10,9 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <UserProvider>
-        <Component {...pageProps} />
-      </UserProvider>
+      <Component {...pageProps} />
     </>
   );
 }
