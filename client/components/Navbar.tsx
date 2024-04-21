@@ -7,16 +7,16 @@ interface SideNavProps {
 
 const SideNav: React.FC<SideNavProps> = ({ setWindow }) => {
   return (
-    <nav className = {styles.sidebar}>
+    <nav className={styles.sidebar}>
       <ul>
         <li>
-          <button onClick={() => setWindow(0)}>Window 0</button>
+          <button onClick={() => setWindow(0)}>Upload</button>
         </li>
         <li>
-          <button onClick={() => setWindow(1)}>Window 1</button>
+          <button onClick={() => setWindow(1)}>Visualization</button>
         </li>
         <li>
-          <button onClick={() => setWindow(2)}>Window 2</button>
+          <button onClick={() => setWindow(2)}>Insights</button>
         </li>
         <li>
           <Link href="/contact">

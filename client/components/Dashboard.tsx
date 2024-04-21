@@ -1,11 +1,17 @@
+// components/Dashboard.js
 import React from 'react';
 
-function DummyDashboard(){
-
-    return (       
+const DummyDashboard = () => {
+  return (
     <div>
-        <p>Dashboard</p>
-    </div>);
-}
+      <h1>Visualization Dashboard</h1>
+      <p>Here you can view the analysis results in graphical formats.</p>
+      {/* Placeholder for charts or graphs */}
+      <div>
+        <p>[Insert chart/graph here]</p>
+      </div>
+    </div>
+  );
+};
 
 export default DummyDashboard;

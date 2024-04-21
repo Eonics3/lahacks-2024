@@ -6,12 +6,15 @@ import pandas as pd
 import requests
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FLASK_SECRET_KEY')
+app.secret_key = "your_very_secret_key_here"
+# app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 CORS(app)
 
-url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
+# url: str = os.environ.get("SUPABASE_URL")
+# key: str = os.environ.get("SUPABASE_KEY")
+url = "https://wdjsrmpodefhvmxbwfwe.supabase.co"
+key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkanNybXBvZGVmaHZteGJ3ZndlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMzU5OTM3NCwiZXhwIjoyMDI5MTc1Mzc0fQ.Lr78ePO9bfg-_8Z4AM4g7S0cPKYWuTJF-XjXGOXTRGE"
 supabase: Client = create_client(url, key)
 
 @app.route('/upload', methods=['POST'])
