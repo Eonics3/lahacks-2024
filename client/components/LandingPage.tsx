@@ -3,13 +3,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import styles from './LandingPage.module.css';
 
-const PageContainer = styled.div`
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-`;
-
 const SignInButton = styled.button`
   background-color: white;
   color: #273b29;
