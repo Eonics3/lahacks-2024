@@ -34,7 +34,7 @@ const UploadPage = () => {
             Sustainability analysis. We use Large Language Model Agents combined
             with Retrieval Augmented Generation to help visualize and deliver
             key insights for company greenhouse gas emissions. Our calculations
-            are based on the 2023 US Environment Protection Agencys Emissions
+            are based on a variety of reputable database such as 2023 US EPA Emissions
             Factors report.
           </p>
           <ol
