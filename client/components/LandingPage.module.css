@@ -1,0 +1,80 @@
+
+.videoContainer {
+    position: relative;
+    overflow: hidden;  
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;  
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'Hatton';
+    src: url('/fonts/pphatton.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mefidows';
+    src: url('/fonts/mefidows.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Neueub';
+    src: url('/fonts/neueb.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.largeText {
+    font-size: 64px; /* Large font size for big text */
+    color: white; /* Assuming you want it white */
+    font-family: 'Hatton', sans-serif; /* Use the custom font with a fallback */
+}
+
+.logo {
+    position: absolute;
+    top: 25px;
+    left: 27px;
+    height: 65px;  /* Adjust size as needed */
+}
+
+.brandName {
+    position: absolute;
+    top: 45px;  /* Adjust for alignment with the logo */
+    left: 108px;  /* Adjust based on the size of the logo */
+    color: white;
+    font-size: 23px;  /* Adjust size as needed */
+    font-family: 'Neueub', sans-serif; 
+}
