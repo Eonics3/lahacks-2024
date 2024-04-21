@@ -3,43 +3,79 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full height of the viewport */
-  width: 100%; /* Full width */
-  padding: 20px; /* Padding for some spacing around the box */
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  background-image: url('/path-to-your-background-image.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .dragArea {
-  border: 2px dashed #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  width: 60%; /* Width as per your requirement */
-  max-width: 600px; /* Optional: If you want to limit the max width */
-  margin: 0 auto; /* This centers the box horizontally */
+  border: 2px dashed #91b59c;
+  border-radius: 10px; /* More pronounced rounded corners */
+  padding: 50px; /* More padding for a larger area */
+  height: 50%;
+  width: 100%; /* Adjusted width */
+  margin: 0 auto;
   text-align: center;
-  transition: background-color 0.3s; /* Smooth transition for drag over effect */
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ... rest of your styles ... */
-
-/* Additional styles for active drag area */
 .active {
-  background-color: #f8f8f8; /* Light background on active drag */
+  background-color: #f8f8f8;
 }
 
-/* Styles for the button */
+.fileDropper {
+  width: 100%;
+  margin-top: 20px; /* Added margin at the top */
+  position: relative;
+}
+
+.filePreview {
+  margin-top: 10px; /* Space between file name and drop message */
+}
+
 .uploadBtn {
-  background-color: #007bff;
+  background-color: #577467;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 30px; /* Larger padding for a bigger button */
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-  margin-top: 10px; /* Spacing between the drop area and button */
+  border-radius: 20px; /* More rounded edges for the button */
+  margin-top: 20px; /* Space between drop area and button */
+  font-weight: bold; /* Make the text a bit bolder */
+  font-size: 18px; /* Larger font size */
+  width: 50%; /* Make the button wider */
+  max-width: 200px; /* Maximum width for the button */
 }
 
+/* Add some custom styles for the drop message */
+.dropMessage {
+  font-size: 18px; /* Larger text */
+  color: #aaa; /* Lighter text color */
+  padding-bottom: 50px;
+}
+
+/* Hidden file input styling */
 .hiddenInput {
-  display: none; /* Keep your input hidden as you have a custom button */
+  display: none;
 }
 
-/* ... rest of your styles ... */
+/* Add custom styling for the file name display */
+.fileName {
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #333; /* Font color for the file name */
+}
+
+/* Adjust the remove button styling */
+.removeBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 16px; /* Adjust font size as needed */
+}

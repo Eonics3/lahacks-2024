@@ -100,9 +100,9 @@ export default function DragAndDrop( { setScreen } ) {
           accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
         />
         <div className={styles.fileDropper}>
-          {file ? (
-            <div className={styles.filePreview}>
-              <span>{file.name}</span>
+        {file ? (
+          <div className={styles.filePreview}>
+            <span className={styles.fileName}>{file.name}</span>
               <button onClick={removeFile} className={styles.removeBtn}>
                 &times; Remove
               </button>
