@@ -114,38 +114,6 @@ def login():
             'message': 'Login failed'
         })
 
-# @app.route('/add_user', methods=['POST'])
-# def add_user():
-#     print("adding user...")
-#     data = request.json 
-#     print(f"data: {data}")
-    
-#     code = data['code']
-#     token_response = requests.post('https://oauth2.googleapis.com/token', data={
-#             'code': code,
-#             'client_id': '876806360052-jo1uerlq1ru56i93qr4ku55ikhmdoces.apps.googleusercontent.com',
-#             'client_secret': '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',
-#             'redirect_uri': 'http://127.0.0.1:3000/portal',
-#             'grant_type': 'authorization_code'
-#         }).json()    
-    
-#     print(f"token_response: {token_response}")
-    
-#     access_token = token_response.get('access_token')
-#     print(f"access_token: {access_token}")
-#     user_info_response = requests.get('https://www.googleapis.com/oauth2/v2/userinfo', headers={
-#         'Authorization': f'Bearer {access_token}'
-#     }).json()
-    
-#     print(f"user_info_response: {user_info_response}")
-    
-#     email = user_info_response.get('email')
-#     full_name = user_info_response.get('name')
-    
-#     print(f"email: {email}, full_name: {full_name}")
-    
-#     return jsonify({'status': 'success', 'data': data})
-
 @app.route('/callback')
 def callback():
     print(f"in callback")
