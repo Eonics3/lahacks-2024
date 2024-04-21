@@ -30,7 +30,7 @@ const UploadPage = () => {
             }}
           >
             {" "}
-            {/* Adjusted marginBottom to '0px' */}A free AI-powered helper for
+            {/* Adjusted marginBottom to '0px' */}We are Sustainalytics, a free AI-powered helper for
             Sustainability analysis. We use Large Language Model Agents combined
             with Retrieval Augmented Generation to help visualize and deliver
             key insights for company greenhouse gas emissions. Our calculations
